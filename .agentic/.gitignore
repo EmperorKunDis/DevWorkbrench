@@ -1,0 +1,5 @@
+# Working directories (temp files)
+*/working/*
+
+# Keep structure
+!*/working/.gitkeep
