@@ -28,16 +28,7 @@
 2. **AI Pipeline** - AI Gateway, Providers, Prompts
 3. **Realtime** - SSE, Notifications, Sync
 4. **Billing** - Stripe, Usage, Subscriptions
-
-### 🔴 Agent 5: Frontend
-
-**Zodpovědnost:**
-
-- Angular 19 components
-- Standalone components
-- Signals & RxJS
-- API integration
-
+5. **Frontend** - Angular 19 components, Standalone components, Signals & RxJS, API integration
 6. **DevOps & QA** - CI/CD, Tests, Deployment
 
 ## 📋 CheckAgent Requirements
