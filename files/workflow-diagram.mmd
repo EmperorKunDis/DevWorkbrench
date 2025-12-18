@@ -1,0 +1,124 @@
+graph TB
+    Start([🎬 ORCHESTRATOR START]) --> Plan{📋 Vyber Mini-Úkol<br/>z Master Plan}
+    
+    Plan -->|Úkol definován| CheckDeps{🔍 Dependencies<br/>Ready?}
+    
+    CheckDeps -->|NE| Queue[📦 Queue Task<br/>Pracuj na jiném]
+    CheckDeps -->|ANO| Prep[📚 Připrav Kontext<br/>Max 14 souborů<br/>+ Standards]
+    
+    Queue --> Plan
+    
+    Prep --> SelectAgent{🎯 Vyber<br/>DevAgent}
+    
+    SelectAgent -->|Backend| Dev1[🤖 AGENT 1<br/>Backend Core]
+    SelectAgent -->|AI| Dev2[🤖 AGENT 2<br/>AI Pipeline]
+    SelectAgent -->|Realtime| Dev3[🤖 AGENT 3<br/>Realtime]
+    SelectAgent -->|Billing| Dev4[🤖 AGENT 4<br/>Billing]
+    SelectAgent -->|Frontend| Dev5[🤖 AGENT 5<br/>Frontend]
+    SelectAgent -->|DevOps| Dev6[🤖 AGENT 6<br/>DevOps & QA]
+    
+    Dev1 --> DevStart[💻 DEV STARTS]
+    Dev2 --> DevStart
+    Dev3 --> DevStart
+    Dev4 --> DevStart
+    Dev5 --> DevStart
+    Dev6 --> DevStart
+    
+    DevStart --> ReadFiles[📖 Přečti všechny<br/>poskytnuté soubory]
+    ReadFiles --> Implement[⚡ Implementuj<br/>KOMPLETNĚ]
+    
+    Implement --> SelfCheck{🔍 Self-Check:<br/>Mock data?<br/>Dummy vars?<br/>TODO?}
+    
+    SelfCheck -->|Našel problémy| FixProblems[🔧 Oprav problémy]
+    FixProblems --> SelfCheck
+    
+    SelfCheck -->|Vše OK| WriteReadme[📝 Zapiš do README.md:<br/>- Co bylo implementováno<br/>- Proč tato implementace<br/>- Změněné soubory<br/>- Přidané závislosti]
+    
+    WriteReadme --> DevDone[✅ DEV DONE]
+    
+    DevDone --> CheckStart[🔍 CHECKAGENT START]
+    
+    CheckStart --> C1{❌ Mock<br/>Data?}
+    C1 -->|ANO| FailPath[❌ FAIL PATH]
+    C1 -->|NE| C2{❌ Dummy<br/>Variables?}
+    
+    C2 -->|ANO| FailPath
+    C2 -->|NE| C3{❌ TODO<br/>Comments?}
+    
+    C3 -->|ANO| FailPath
+    C3 -->|NE| C4{✅ Kompletní<br/>Implementace?}
+    
+    C4 -->|NE| FailPath
+    C4 -->|ANO| C5{✅ Coding<br/>Standards?}
+    
+    C5 -->|NE| FailPath
+    C5 -->|ANO| C6{✅ Error<br/>Handling?}
+    
+    C6 -->|NE| FailPath
+    C6 -->|ANO| C7{✅ Type<br/>Safety?}
+    
+    C7 -->|NE| FailPath
+    C7 -->|ANO| C8{✅ Security<br/>Checks?}
+    
+    C8 -->|NE| FailPath
+    C8 -->|ANO| C9{✅ Performance<br/>OK?}
+    
+    C9 -->|NE| FailPath
+    C9 -->|ANO| C10{✅ Tests<br/>PASSují?}
+    
+    C10 -->|NE| FailPath
+    C10 -->|ANO| PassPath[✅ PASS PATH]
+    
+    FailPath --> WriteFail[📝 Zapiš za ** <br/>- Status: FAIL<br/>- Problémy s řádky<br/>- Konkrétní fix návrhy]
+    PassPath --> WritePass[📝 Zapiš za ** <br/>- Status: PASS<br/>- Všechny checks OK<br/>- Production ready]
+    
+    WriteFail --> CheckDone[🏁 CHECK DONE]
+    WritePass --> CheckDone
+    
+    CheckDone --> OrchRead{🤔 ORCHESTRATOR<br/>Čte README.md}
+    
+    OrchRead -->|PASS ✅| Integrate[🎉 Integruj do Main<br/>1. Merge files<br/>2. Run tests<br/>3. Update docs<br/>4. Mark completed]
+    
+    OrchRead -->|FAIL ❌| Analyze{📊 Analyzuj<br/>Typ problému}
+    
+    Analyze -->|Chybí kontext| MoreFiles[📚 Přidej více souborů]
+    Analyze -->|Špatná strategie| ChangeStrategy[🔄 Změň přístup]
+    Analyze -->|Drobné chyby| RerunDev[🔁 Re-run DevAgent<br/>s CheckAgent feedback]
+    
+    MoreFiles --> Prep
+    ChangeStrategy --> Prep
+    RerunDev --> DevStart
+    
+    Integrate --> UpdateState[📝 Update<br/>current-state.md<br/>completed-tasks.md]
+    
+    UpdateState --> NextTask{🎯 Další<br/>Mini-Úkol?}
+    
+    NextTask -->|ANO| Plan
+    NextTask -->|NE - Project Done| Done([🎊 PROJECT<br/>COMPLETED!])
+    
+    OrchRead -->|CLARIFY 🤷| GetMoreInfo[❓ Vyžádej více info<br/>od uživatele]
+    GetMoreInfo --> Plan
+    
+    style Start fill:#4CAF50,stroke:#2E7D32,stroke-width:4px,color:#fff
+    style Done fill:#4CAF50,stroke:#2E7D32,stroke-width:4px,color:#fff
+    
+    style PassPath fill:#4CAF50,stroke:#2E7D32,stroke-width:3px,color:#fff
+    style FailPath fill:#f44336,stroke:#c62828,stroke-width:3px,color:#fff
+    
+    style WritePass fill:#81C784,stroke:#388E3C,stroke-width:2px,color:#000
+    style WriteFail fill:#E57373,stroke:#D32F2F,stroke-width:2px,color:#fff
+    
+    style Dev1 fill:#2196F3,stroke:#1565C0,stroke-width:2px,color:#fff
+    style Dev2 fill:#2196F3,stroke:#1565C0,stroke-width:2px,color:#fff
+    style Dev3 fill:#2196F3,stroke:#1565C0,stroke-width:2px,color:#fff
+    style Dev4 fill:#2196F3,stroke:#1565C0,stroke-width:2px,color:#fff
+    style Dev5 fill:#2196F3,stroke:#1565C0,stroke-width:2px,color:#fff
+    style Dev6 fill:#2196F3,stroke:#1565C0,stroke-width:2px,color:#fff
+    
+    style CheckStart fill:#FF9800,stroke:#E65100,stroke-width:2px,color:#fff
+    style CheckDone fill:#FF9800,stroke:#E65100,stroke-width:2px,color:#fff
+    
+    style Integrate fill:#9C27B0,stroke:#6A1B9A,stroke-width:2px,color:#fff
+    
+    style Plan fill:#00BCD4,stroke:#006064,stroke-width:2px,color:#fff
+    style OrchRead fill:#00BCD4,stroke:#006064,stroke-width:2px,color:#fff

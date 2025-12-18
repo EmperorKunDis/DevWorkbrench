@@ -1,0 +1,20 @@
+# Agent 6 - DevOps & QA
+
+## 🎯 Zodpovědnost
+CI/CD pipelines, E2E tests, Documentation, Deployment scripts
+
+## 📋 Current Task
+No task assigned yet.
+
+## 📝 DevAgent Implementation
+<!-- DevAgent bude psát sem po dokončení úkolu -->
+
+## Status
+Waiting for assignment...
+
+**|**
+
+## ✅ CheckAgent Verification
+<!-- CheckAgent bude psát sem po kontrole -->
+
+No verification yet.

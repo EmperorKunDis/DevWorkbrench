@@ -1,0 +1,1591 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Post Hub – Visual Book</title>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* ═══════════════════════════════════════════════════════════════
+           POST HUB DESIGN SYSTEM v3.0
+           Gradient Ring Edition | Manrope + IBM Plex Mono
+        ═══════════════════════════════════════════════════════════════ */
+
+        :root {
+            /* ─────────────────────────────────────────────────────────────
+               BRAND GRADIENT COLORS
+               Fialová → Modrá → Cyan → Zelená
+            ───────────────────────────────────────────────────────────── */
+            
+            /* Violet */
+            --violet-50: #f5f3ff;
+            --violet-100: #ede9fe;
+            --violet-200: #ddd6fe;
+            --violet-300: #c4b5fd;
+            --violet-400: #a78bfa;
+            --violet-500: #8b5cf6;
+            --violet-600: #7c3aed;
+            --violet-700: #6d28d9;
+            --violet-800: #5b21b6;
+            --violet-900: #4c1d95;
+            
+            /* Blue (Primary for Hub) */
+            --blue-50: #eff6ff;
+            --blue-100: #dbeafe;
+            --blue-200: #bfdbfe;
+            --blue-300: #93c5fd;
+            --blue-400: #60a5fa;
+            --blue-500: #3b82f6;
+            --blue-600: #2563eb;
+            --blue-700: #1d4ed8;
+            --blue-800: #1e40af;
+            --blue-900: #1e3a8a;
+            
+            /* Cyan */
+            --cyan-50: #ecfeff;
+            --cyan-100: #cffafe;
+            --cyan-200: #a5f3fc;
+            --cyan-300: #67e8f9;
+            --cyan-400: #22d3ee;
+            --cyan-500: #06b6d4;
+            --cyan-600: #0891b2;
+            --cyan-700: #0e7490;
+            --cyan-800: #155e75;
+            --cyan-900: #164e63;
+            
+            /* Green */
+            --green-50: #ecfdf5;
+            --green-100: #d1fae5;
+            --green-200: #a7f3d0;
+            --green-300: #6ee7b7;
+            --green-400: #34d399;
+            --green-500: #10b981;
+            --green-600: #059669;
+            --green-700: #047857;
+            --green-800: #065f46;
+            --green-900: #064e3b;
+            
+            /* ─────────────────────────────────────────────────────────────
+               SLATE – Neutral Foundation
+            ───────────────────────────────────────────────────────────── */
+            --slate-50: #f8fafc;
+            --slate-100: #f1f5f9;
+            --slate-200: #e2e8f0;
+            --slate-300: #cbd5e1;
+            --slate-400: #94a3b8;
+            --slate-500: #64748b;
+            --slate-600: #475569;
+            --slate-700: #334155;
+            --slate-800: #1e293b;
+            --slate-900: #0f172a;
+
+            /* ─────────────────────────────────────────────────────────────
+               SEMANTIC COLORS
+            ───────────────────────────────────────────────────────────── */
+            --success: #10b981;
+            --warning: #f59e0b;
+            --error: #ef4444;
+            --info: #3b82f6;
+            
+            /* ─────────────────────────────────────────────────────────────
+               GRADIENTS
+            ───────────────────────────────────────────────────────────── */
+            --gradient-brand: linear-gradient(135deg, #8b5cf6 0%, #3b82f6 35%, #06b6d4 65%, #10b981 100%);
+            --gradient-brand-90: linear-gradient(90deg, #8b5cf6 0%, #3b82f6 30%, #06b6d4 70%, #10b981 100%);
+            --gradient-hub: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+            --gradient-violet-blue: linear-gradient(135deg, #8b5cf6 0%, #3b82f6 100%);
+            --gradient-blue-cyan: linear-gradient(135deg, #3b82f6 0%, #06b6d4 100%);
+            --gradient-cyan-green: linear-gradient(135deg, #06b6d4 0%, #10b981 100%);
+            --gradient-dark: linear-gradient(145deg, rgba(30, 41, 59, 0.6) 0%, rgba(15, 23, 42, 0.8) 100%);
+            
+            /* ─────────────────────────────────────────────────────────────
+               SHADOWS & EFFECTS
+            ───────────────────────────────────────────────────────────── */
+            --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+            --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+            --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+            --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+            --shadow-glow: 0 0 20px rgba(59, 130, 246, 0.3);
+            --shadow-glow-brand: 0 0 30px rgba(59, 130, 246, 0.2), 0 0 60px rgba(139, 92, 246, 0.1), 0 0 60px rgba(16, 185, 129, 0.1);
+
+            /* ─────────────────────────────────────────────────────────────
+               TYPOGRAPHY
+            ───────────────────────────────────────────────────────────── */
+            --font-primary: 'Manrope', -apple-system, BlinkMacSystemFont, sans-serif;
+            --font-mono: 'IBM Plex Mono', 'Fira Code', monospace;
+            
+            /* ─────────────────────────────────────────────────────────────
+               SPACING SCALE (4px base)
+            ───────────────────────────────────────────────────────────── */
+            --space-1: 4px;
+            --space-2: 8px;
+            --space-3: 12px;
+            --space-4: 16px;
+            --space-5: 20px;
+            --space-6: 24px;
+            --space-8: 32px;
+            --space-10: 40px;
+            --space-12: 48px;
+            --space-16: 64px;
+            --space-20: 80px;
+
+            /* ─────────────────────────────────────────────────────────────
+               BORDER RADIUS
+            ───────────────────────────────────────────────────────────── */
+            --radius-sm: 4px;
+            --radius-md: 8px;
+            --radius-lg: 12px;
+            --radius-xl: 16px;
+            --radius-2xl: 24px;
+            --radius-full: 9999px;
+        }
+
+        /* ═══════════════════════════════════════════════════════════════
+           BASE STYLES
+        ═══════════════════════════════════════════════════════════════ */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-primary);
+            background: var(--slate-900);
+            color: var(--slate-100);
+            line-height: 1.6;
+            font-size: 16px;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(ellipse 80% 50% at 20% 40%, rgba(139, 92, 246, 0.06) 0%, transparent 50%),
+                radial-gradient(ellipse 60% 40% at 80% 20%, rgba(59, 130, 246, 0.05) 0%, transparent 50%),
+                radial-gradient(ellipse 50% 30% at 50% 80%, rgba(16, 185, 129, 0.04) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* ═══════════════════════════════════════════════════════════════
+           LAYOUT
+        ═══════════════════════════════════════════════════════════════ */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 var(--space-6);
+            position: relative;
+            z-index: 1;
+        }
+
+        section {
+            padding: var(--space-20) 0;
+            border-bottom: 1px solid rgba(148, 163, 184, 0.1);
+        }
+
+        section:last-child {
+            border-bottom: none;
+        }
+
+        /* ═══════════════════════════════════════════════════════════════
+           TYPOGRAPHY STYLES
+        ═══════════════════════════════════════════════════════════════ */
+        h1, h2, h3, h4, h5, h6 {
+            font-family: var(--font-primary);
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            line-height: 1.2;
+        }
+
+        .section-label {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.3em;
+            color: var(--blue-400);
+            margin-bottom: var(--space-4);
+            display: block;
+        }
+
+        .section-title {
+            font-size: clamp(2rem, 4vw, 2.5rem);
+            font-weight: 800;
+            background: linear-gradient(135deg, #fff 0%, var(--slate-300) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: var(--space-6);
+        }
+
+        .section-desc {
+            font-size: 1.125rem;
+            color: var(--slate-400);
+            max-width: 600px;
+            margin-bottom: var(--space-10);
+        }
+
+        /* ═══════════════════════════════════════════════════════════════
+           COVER / HERO
+        ═══════════════════════════════════════════════════════════════ */
+        .cover {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: var(--space-10);
+            position: relative;
+        }
+
+        .cover::after {
+            content: '';
+            position: absolute;
+            bottom: var(--space-10);
+            left: 50%;
+            transform: translateX(-50%);
+            width: 1px;
+            height: 60px;
+            background: linear-gradient(to bottom, var(--blue-500), transparent);
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 1; }
+        }
+
+        .cover .subtitle {
+            font-size: 1.25rem;
+            color: var(--slate-400);
+            margin-top: var(--space-8);
+            margin-bottom: var(--space-2);
+        }
+
+        .cover .version {
+            font-family: var(--font-mono);
+            font-size: 0.875rem;
+            color: var(--slate-500);
+        }
+
+        /* ═══════════════════════════════════════════════════════════════
+           LOGO SYSTEM
+        ═══════════════════════════════════════════════════════════════ */
+        
+        /* Base Logo Text */
+        .logo-text {
+            display: flex;
+            align-items: center;
+            font-family: var(--font-primary);
+            font-weight: 700;
+            letter-spacing: -0.02em;
+        }
+
+        .logo-text .post {
+            color: white;
+        }
+
+        .logo-text .hub {
+            background: var(--gradient-hub);
+            color: white;
+            padding: 0.08em 0.35em;
+            border-radius: 8px;
+            margin-left: 0.12em;
+        }
+
+        /* Logo with Gradient Ring */
+        .logo-ring {
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px 32px;
+            border-radius: 16px;
+            background: var(--slate-900);
+        }
+
+        .logo-ring::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 16px;
+            padding: 3px;
+            background: var(--gradient-brand);
+            -webkit-mask: 
+                linear-gradient(#fff 0 0) content-box, 
+                linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+        }
+
+        .logo-ring .logo-text {
+            font-size: 2.25rem;
+        }
+
+        /* Logo Ring with Glow */
+        .logo-ring.glow::after {
+            content: '';
+            position: absolute;
+            inset: -8px;
+            border-radius: 24px;
+            background: linear-gradient(
+                135deg,
+                rgba(139, 92, 246, 0.25) 0%,
+                rgba(59, 130, 246, 0.15) 35%,
+                rgba(6, 182, 212, 0.15) 65%,
+                rgba(16, 185, 129, 0.25) 100%
+            );
+            filter: blur(12px);
+            z-index: -1;
+        }
+
+        /* Size Variants */
+        .logo-ring.sm {
+            padding: 10px 16px;
+            border-radius: 10px;
+        }
+        .logo-ring.sm::before { border-radius: 10px; padding: 2px; }
+        .logo-ring.sm .logo-text { font-size: 1rem; }
+        .logo-ring.sm .hub { border-radius: 4px; }
+
+        .logo-ring.md {
+            padding: 14px 22px;
+            border-radius: 12px;
+        }
+        .logo-ring.md::before { border-radius: 12px; padding: 2.5px; }
+        .logo-ring.md .logo-text { font-size: 1.5rem; }
+        .logo-ring.md .hub { border-radius: 6px; }
+
+        .logo-ring.lg {
+            padding: 18px 28px;
+            border-radius: 14px;
+        }
+        .logo-ring.lg::before { border-radius: 14px; }
+        .logo-ring.lg .logo-text { font-size: 2rem; }
+
+        .logo-ring.xl {
+            padding: 24px 40px;
+            border-radius: 20px;
+        }
+        .logo-ring.xl::before { border-radius: 20px; padding: 4px; }
+        .logo-ring.xl .logo-text { font-size: 3rem; }
+        .logo-ring.xl .hub { border-radius: 10px; }
+
+        /* Light Background Variant */
+        .logo-ring.light {
+            background: var(--slate-100);
+        }
+        .logo-ring.light .post {
+            color: var(--slate-900);
+        }
+
+        /* Logo Display Cards */
+        .logo-display {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--space-8);
+            margin-top: var(--space-10);
+        }
+
+        .logo-card {
+            flex: 1;
+            min-width: 300px;
+            padding: var(--space-12);
+            border-radius: var(--radius-2xl);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .logo-card.dark {
+            background: var(--slate-900);
+            border: 1px solid rgba(148, 163, 184, 0.1);
+        }
+
+        .logo-card.light {
+            background: var(--slate-100);
+        }
+
+        .logo-card .label {
+            position: absolute;
+            bottom: var(--space-4);
+            left: var(--space-4);
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            opacity: 0.6;
+        }
+
+        .logo-card.light .label {
+            color: var(--slate-700);
+        }
+
+        /* Logo Variations Grid */
+        .logo-variations {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: var(--space-6);
+            margin-top: var(--space-8);
+        }
+
+        .logo-variation {
+            background: rgba(30, 41, 59, 0.4);
+            border: 1px solid rgba(148, 163, 184, 0.1);
+            border-radius: var(--radius-xl);
+            padding: var(--space-8);
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 140px;
+        }
+
+        .logo-variation .name {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: var(--slate-400);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-top: var(--space-4);
+        }
+
+        /* Clear Space Demo */
+        .clear-space-demo {
+            display: inline-flex;
+            position: relative;
+            padding: var(--space-10);
+            border: 2px dashed var(--blue-400);
+            border-radius: var(--radius-lg);
+            margin-top: var(--space-8);
+        }
+
+        .clear-space-demo::before {
+            content: 'min 1x';
+            position: absolute;
+            top: 50%;
+            left: -60px;
+            transform: translateY(-50%);
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            color: var(--blue-400);
+        }
+
+        /* ═══════════════════════════════════════════════════════════════
+           COLOR PALETTE
+        ═══════════════════════════════════════════════════════════════ */
+        .color-palette {
+            margin-top: var(--space-10);
+        }
+
+        .color-group {
+            margin-bottom: var(--space-10);
+        }
+
+        .color-group-title {
+            font-size: 1.125rem;
+            font-weight: 600;
+            color: white;
+            margin-bottom: var(--space-2);
+        }
+
+        .color-group-desc {
+            font-size: 0.875rem;
+            color: var(--slate-400);
+            margin-bottom: var(--space-4);
+        }
+
+        .color-swatches {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+            gap: var(--space-3);
+        }
+
+        .color-swatch {
+            aspect-ratio: 1;
+            border-radius: var(--radius-lg);
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.2s ease;
+        }
+
+        .color-swatch:hover {
+            transform: scale(1.05);
+        }
+
+        .color-swatch .info {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: var(--space-2);
+            background: rgba(0,0,0,0.6);
+            backdrop-filter: blur(4px);
+        }
+
+        .color-swatch .shade {
+            font-family: var(--font-mono);
+            font-size: 0.65rem;
+            color: white;
+            opacity: 0.8;
+        }
+
+        .color-swatch .hex {
+            font-family: var(--font-mono);
+            font-size: 0.6rem;
+            color: white;
+            opacity: 0.6;
+        }
+
+        /* Gradient Swatches */
+        .gradient-swatches {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: var(--space-4);
+            margin-top: var(--space-6);
+        }
+
+        .gradient-swatch {
+            height: 100px;
+            border-radius: var(--radius-xl);
+            padding: var(--space-4);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+        }
+
+        .gradient-swatch .name {
+            font-weight: 600;
+            color: white;
+            margin-bottom: var(--space-1);
+        }
+
+        .gradient-swatch .value {
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            color: rgba(255,255,255,0.7);
+        }
+
+        /* ═══════════════════════════════════════════════════════════════
+           TYPOGRAPHY SHOWCASE
+        ═══════════════════════════════════════════════════════════════ */
+        .type-specimen {
+            margin-top: var(--space-10);
+        }
+
+        .type-family {
+            background: rgba(30, 41, 59, 0.4);
+            border: 1px solid rgba(148, 163, 184, 0.1);
+            border-radius: var(--radius-2xl);
+            padding: var(--space-8);
+            margin-bottom: var(--space-6);
+        }
+
+        .type-family-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: var(--space-6);
+            padding-bottom: var(--space-4);
+            border-bottom: 1px solid rgba(148, 163, 184, 0.1);
+        }
+
+        .type-family-name {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: white;
+        }
+
+        .type-family-meta {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: var(--slate-400);
+        }
+
+        .type-sample {
+            font-size: 3rem;
+            font-weight: 300;
+            color: white;
+            margin-bottom: var(--space-4);
+            line-height: 1.3;
+        }
+
+        .type-alphabet {
+            font-size: 1.125rem;
+            color: var(--slate-300);
+            letter-spacing: 0.05em;
+            margin-bottom: var(--space-4);
+        }
+
+        .type-weights {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--space-4);
+        }
+
+        .type-weight {
+            padding: var(--space-2) var(--space-4);
+            background: rgba(148, 163, 184, 0.1);
+            border-radius: var(--radius-md);
+            font-size: 0.875rem;
+            color: var(--slate-200);
+        }
+
+        /* Type Scale */
+        .type-scale {
+            margin-top: var(--space-8);
+        }
+
+        .type-scale-item {
+            display: flex;
+            align-items: baseline;
+            gap: var(--space-6);
+            padding: var(--space-4) 0;
+            border-bottom: 1px solid rgba(148, 163, 184, 0.08);
+        }
+
+        .type-scale-label {
+            flex-shrink: 0;
+            width: 100px;
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: var(--slate-400);
+        }
+
+        .type-scale-sample {
+            color: white;
+        }
+
+        /* ═══════════════════════════════════════════════════════════════
+           UI COMPONENTS
+        ═══════════════════════════════════════════════════════════════ */
+        .components-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--space-6);
+            margin-top: var(--space-10);
+        }
+
+        .component-card {
+            background: rgba(30, 41, 59, 0.4);
+            border: 1px solid rgba(148, 163, 184, 0.1);
+            border-radius: var(--radius-2xl);
+            padding: var(--space-6);
+        }
+
+        .component-title {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--slate-400);
+            margin-bottom: var(--space-4);
+        }
+
+        .component-demo {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--space-3);
+            align-items: center;
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: var(--space-2);
+            padding: var(--space-3) var(--space-5);
+            border-radius: var(--radius-lg);
+            font-family: var(--font-primary);
+            font-size: 0.9375rem;
+            font-weight: 600;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            border: none;
+        }
+
+        .btn-primary {
+            background: var(--gradient-hub);
+            color: white;
+            box-shadow: 0 4px 15px rgba(59, 130, 246, 0.4);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(59, 130, 246, 0.5);
+        }
+
+        .btn-gradient {
+            background: var(--gradient-brand);
+            color: white;
+            box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
+        }
+
+        .btn-gradient:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-glow-brand);
+        }
+
+        .btn-secondary {
+            background: rgba(148, 163, 184, 0.1);
+            color: var(--slate-200);
+            border: 1px solid rgba(148, 163, 184, 0.2);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(148, 163, 184, 0.2);
+            color: white;
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--slate-200);
+            border: 2px solid var(--slate-600);
+        }
+
+        .btn-outline:hover {
+            border-color: var(--blue-500);
+            color: white;
+            background: rgba(59, 130, 246, 0.1);
+        }
+
+        .btn-ghost {
+            background: transparent;
+            color: var(--blue-400);
+            padding: var(--space-2) var(--space-3);
+        }
+
+        .btn-ghost:hover {
+            background: rgba(59, 130, 246, 0.1);
+        }
+
+        /* Input Fields */
+        .input {
+            width: 100%;
+            padding: var(--space-3) var(--space-4);
+            background: rgba(15, 23, 42, 0.6);
+            border: 1px solid rgba(148, 163, 184, 0.2);
+            border-radius: var(--radius-lg);
+            font-family: var(--font-primary);
+            font-size: 0.9375rem;
+            color: white;
+            transition: all 0.2s ease;
+        }
+
+        .input:focus {
+            outline: none;
+            border-color: var(--blue-500);
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+        }
+
+        .input::placeholder {
+            color: var(--slate-500);
+        }
+
+        /* Badges */
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-1);
+            padding: var(--space-1) var(--space-3);
+            border-radius: var(--radius-full);
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        .badge-violet {
+            background: rgba(139, 92, 246, 0.2);
+            color: var(--violet-400);
+        }
+
+        .badge-blue {
+            background: rgba(59, 130, 246, 0.2);
+            color: var(--blue-400);
+        }
+
+        .badge-cyan {
+            background: rgba(6, 182, 212, 0.2);
+            color: var(--cyan-400);
+        }
+
+        .badge-green {
+            background: rgba(16, 185, 129, 0.2);
+            color: var(--green-400);
+        }
+
+        .badge-success {
+            background: rgba(16, 185, 129, 0.2);
+            color: #34d399;
+        }
+
+        .badge-warning {
+            background: rgba(245, 158, 11, 0.2);
+            color: #fbbf24;
+        }
+
+        .badge-error {
+            background: rgba(239, 68, 68, 0.2);
+            color: #f87171;
+        }
+
+        /* Cards */
+        .card {
+            background: var(--gradient-dark);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(148, 163, 184, 0.1);
+            border-radius: var(--radius-2xl);
+            padding: var(--space-6);
+            transition: all 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(59, 130, 246, 0.3);
+            box-shadow: var(--shadow-glow);
+        }
+
+        /* Toggle */
+        .toggle {
+            position: relative;
+            width: 48px;
+            height: 26px;
+            background: var(--slate-700);
+            border-radius: var(--radius-full);
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .toggle::after {
+            content: '';
+            position: absolute;
+            top: 3px;
+            left: 3px;
+            width: 20px;
+            height: 20px;
+            background: white;
+            border-radius: 50%;
+            transition: all 0.2s ease;
+        }
+
+        .toggle.active {
+            background: var(--blue-500);
+        }
+
+        .toggle.active::after {
+            transform: translateX(22px);
+        }
+
+        /* ═══════════════════════════════════════════════════════════════
+           SPACING & LAYOUT
+        ═══════════════════════════════════════════════════════════════ */
+        .spacing-demo {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--space-4);
+            margin-top: var(--space-8);
+        }
+
+        .spacing-item {
+            display: flex;
+            align-items: center;
+            gap: var(--space-3);
+        }
+
+        .spacing-box {
+            background: var(--gradient-brand);
+            border-radius: var(--radius-sm);
+        }
+
+        .spacing-label {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: var(--slate-400);
+        }
+
+        .spacing-value {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: var(--slate-200);
+        }
+
+        /* ═══════════════════════════════════════════════════════════════
+           DO'S AND DON'TS
+        ═══════════════════════════════════════════════════════════════ */
+        .dos-donts {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--space-6);
+            margin-top: var(--space-8);
+        }
+
+        .do-item, .dont-item {
+            padding: var(--space-5);
+            border-radius: var(--radius-xl);
+            border: 2px solid;
+        }
+
+        .do-item {
+            background: rgba(16, 185, 129, 0.1);
+            border-color: var(--success);
+        }
+
+        .dont-item {
+            background: rgba(239, 68, 68, 0.1);
+            border-color: var(--error);
+        }
+
+        .do-item .label, .dont-item .label {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: var(--space-3);
+        }
+
+        .do-item .label { color: #34d399; }
+        .dont-item .label { color: var(--error); }
+
+        .do-item p, .dont-item p {
+            font-size: 0.9375rem;
+            color: var(--slate-200);
+        }
+
+        /* ═══════════════════════════════════════════════════════════════
+           NAVIGATION
+        ═══════════════════════════════════════════════════════════════ */
+        .toc {
+            position: fixed;
+            top: 50%;
+            right: var(--space-6);
+            transform: translateY(-50%);
+            z-index: 100;
+            display: none;
+        }
+
+        @media (min-width: 1400px) {
+            .toc { display: block; }
+        }
+
+        .toc a {
+            display: block;
+            width: 8px;
+            height: 8px;
+            background: var(--slate-600);
+            border-radius: 50%;
+            margin: var(--space-3) 0;
+            transition: all 0.2s ease;
+        }
+
+        .toc a:hover, .toc a.active {
+            background: var(--blue-500);
+            transform: scale(1.5);
+        }
+
+        /* ═══════════════════════════════════════════════════════════════
+           FOOTER
+        ═══════════════════════════════════════════════════════════════ */
+        .footer {
+            text-align: center;
+            padding: var(--space-16) 0;
+            color: var(--slate-500);
+        }
+
+        .footer p {
+            font-size: 0.875rem;
+        }
+
+        /* ═══════════════════════════════════════════════════════════════
+           UTILITIES
+        ═══════════════════════════════════════════════════════════════ */
+        .text-center { text-align: center; }
+        .mt-4 { margin-top: var(--space-4); }
+        .mt-8 { margin-top: var(--space-8); }
+        .mt-12 { margin-top: var(--space-12); }
+        .mb-4 { margin-bottom: var(--space-4); }
+        .flex { display: flex; }
+        .gap-4 { gap: var(--space-4); }
+        .items-center { align-items: center; }
+        .justify-center { justify-content: center; }
+    </style>
+</head>
+<body>
+    <!-- Navigation Dots -->
+    <nav class="toc">
+        <a href="#cover" title="Cover"></a>
+        <a href="#logo" title="Logo"></a>
+        <a href="#colors" title="Colors"></a>
+        <a href="#typography" title="Typography"></a>
+        <a href="#components" title="Components"></a>
+        <a href="#spacing" title="Spacing"></a>
+        <a href="#guidelines" title="Guidelines"></a>
+    </nav>
+
+    <!-- Cover -->
+    <section class="cover" id="cover">
+        <span class="section-label">Brand Guidelines</span>
+        <div class="logo-ring glow xl">
+            <div class="logo-text">
+                <span class="post">Post</span>
+                <span class="hub">Hub</span>
+            </div>
+        </div>
+        <p class="subtitle">Visual Book & Design System</p>
+        <p class="version">Version 3.0 — Prosinec 2024</p>
+    </section>
+
+    <!-- Logo Section -->
+    <section id="logo">
+        <div class="container">
+            <span class="section-label">01 — Logo</span>
+            <h2 class="section-title">Značka Post Hub</h2>
+            <p class="section-desc">Logo Post Hub je orámováno gradientovým ringem přecházejícím od fialové přes modrou a cyan až k zelené. Element "Hub" v modré zdůrazňuje centrální roli platformy.</p>
+
+            <div class="logo-display">
+                <div class="logo-card dark">
+                    <div class="logo-ring glow">
+                        <div class="logo-text">
+                            <span class="post">Post</span>
+                            <span class="hub">Hub</span>
+                        </div>
+                    </div>
+                    <span class="label">Na tmavém pozadí</span>
+                </div>
+                <div class="logo-card light">
+                    <div class="logo-ring light">
+                        <div class="logo-text">
+                            <span class="post">Post</span>
+                            <span class="hub">Hub</span>
+                        </div>
+                    </div>
+                    <span class="label">Na světlém pozadí</span>
+                </div>
+            </div>
+
+            <h3 class="mt-12" style="color: white; margin-bottom: var(--space-4);">Velikostní varianty</h3>
+            <div class="logo-variations">
+                <div class="logo-variation">
+                    <div class="logo-ring sm">
+                        <div class="logo-text">
+                            <span class="post">Post</span>
+                            <span class="hub">Hub</span>
+                        </div>
+                    </div>
+                    <span class="name">Small</span>
+                </div>
+                <div class="logo-variation">
+                    <div class="logo-ring md">
+                        <div class="logo-text">
+                            <span class="post">Post</span>
+                            <span class="hub">Hub</span>
+                        </div>
+                    </div>
+                    <span class="name">Medium</span>
+                </div>
+                <div class="logo-variation">
+                    <div class="logo-ring lg">
+                        <div class="logo-text">
+                            <span class="post">Post</span>
+                            <span class="hub">Hub</span>
+                        </div>
+                    </div>
+                    <span class="name">Large</span>
+                </div>
+                <div class="logo-variation">
+                    <div class="logo-ring">
+                        <div class="logo-text">
+                            <span class="post">Post</span>
+                            <span class="hub">Hub</span>
+                        </div>
+                    </div>
+                    <span class="name">XL</span>
+                </div>
+            </div>
+
+            <h3 class="mt-12" style="color: white; margin-bottom: var(--space-4);">Ochranná zóna</h3>
+            <p style="color: var(--slate-400); margin-bottom: var(--space-4);">Minimální volný prostor kolem loga odpovídá výšce písmene "H".</p>
+            <div class="clear-space-demo">
+                <div class="logo-ring md">
+                    <div class="logo-text">
+                        <span class="post">Post</span>
+                        <span class="hub">Hub</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Colors Section -->
+    <section id="colors">
+        <div class="container">
+            <span class="section-label">02 — Barvy</span>
+            <h2 class="section-title">Barevný systém</h2>
+            <p class="section-desc">Čtyřbarevný gradient tvoří základ vizuální identity: fialová symbolizuje kreativitu, modrá spolehlivost, cyan technologii a zelená růst.</p>
+
+            <div class="color-palette">
+                <!-- Gradient Preview -->
+                <div class="color-group">
+                    <h3 class="color-group-title">Brand Gradient</h3>
+                    <p class="color-group-desc">Hlavní gradient pro logo ring a speciální prvky</p>
+                    <div class="gradient-swatches">
+                        <div class="gradient-swatch" style="background: var(--gradient-brand);">
+                            <span class="name">Brand Gradient</span>
+                            <span class="value">135° • violet → blue → cyan → green</span>
+                        </div>
+                        <div class="gradient-swatch" style="background: var(--gradient-brand-90);">
+                            <span class="name">Brand Horizontal</span>
+                            <span class="value">90° • pro širší aplikace</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Violet -->
+                <div class="color-group">
+                    <h3 class="color-group-title">Violet — Kreativita</h3>
+                    <p class="color-group-desc">Gradient start, sekundární akcenty</p>
+                    <div class="color-swatches">
+                        <div class="color-swatch" style="background: var(--violet-50);"><div class="info"><span class="shade">50</span><span class="hex">#f5f3ff</span></div></div>
+                        <div class="color-swatch" style="background: var(--violet-100);"><div class="info"><span class="shade">100</span><span class="hex">#ede9fe</span></div></div>
+                        <div class="color-swatch" style="background: var(--violet-200);"><div class="info"><span class="shade">200</span><span class="hex">#ddd6fe</span></div></div>
+                        <div class="color-swatch" style="background: var(--violet-300);"><div class="info"><span class="shade">300</span><span class="hex">#c4b5fd</span></div></div>
+                        <div class="color-swatch" style="background: var(--violet-400);"><div class="info"><span class="shade">400</span><span class="hex">#a78bfa</span></div></div>
+                        <div class="color-swatch" style="background: var(--violet-500);"><div class="info"><span class="shade">500</span><span class="hex">#8b5cf6</span></div></div>
+                        <div class="color-swatch" style="background: var(--violet-600);"><div class="info"><span class="shade">600</span><span class="hex">#7c3aed</span></div></div>
+                        <div class="color-swatch" style="background: var(--violet-700);"><div class="info"><span class="shade">700</span><span class="hex">#6d28d9</span></div></div>
+                        <div class="color-swatch" style="background: var(--violet-800);"><div class="info"><span class="shade">800</span><span class="hex">#5b21b6</span></div></div>
+                        <div class="color-swatch" style="background: var(--violet-900);"><div class="info"><span class="shade">900</span><span class="hex">#4c1d95</span></div></div>
+                    </div>
+                </div>
+
+                <!-- Blue -->
+                <div class="color-group">
+                    <h3 class="color-group-title">Blue — Spolehlivost (Primary)</h3>
+                    <p class="color-group-desc">Hlavní barva pro "Hub", primární akce a CTA</p>
+                    <div class="color-swatches">
+                        <div class="color-swatch" style="background: var(--blue-50);"><div class="info"><span class="shade">50</span><span class="hex">#eff6ff</span></div></div>
+                        <div class="color-swatch" style="background: var(--blue-100);"><div class="info"><span class="shade">100</span><span class="hex">#dbeafe</span></div></div>
+                        <div class="color-swatch" style="background: var(--blue-200);"><div class="info"><span class="shade">200</span><span class="hex">#bfdbfe</span></div></div>
+                        <div class="color-swatch" style="background: var(--blue-300);"><div class="info"><span class="shade">300</span><span class="hex">#93c5fd</span></div></div>
+                        <div class="color-swatch" style="background: var(--blue-400);"><div class="info"><span class="shade">400</span><span class="hex">#60a5fa</span></div></div>
+                        <div class="color-swatch" style="background: var(--blue-500);"><div class="info"><span class="shade">500</span><span class="hex">#3b82f6</span></div></div>
+                        <div class="color-swatch" style="background: var(--blue-600);"><div class="info"><span class="shade">600</span><span class="hex">#2563eb</span></div></div>
+                        <div class="color-swatch" style="background: var(--blue-700);"><div class="info"><span class="shade">700</span><span class="hex">#1d4ed8</span></div></div>
+                        <div class="color-swatch" style="background: var(--blue-800);"><div class="info"><span class="shade">800</span><span class="hex">#1e40af</span></div></div>
+                        <div class="color-swatch" style="background: var(--blue-900);"><div class="info"><span class="shade">900</span><span class="hex">#1e3a8a</span></div></div>
+                    </div>
+                </div>
+
+                <!-- Cyan -->
+                <div class="color-group">
+                    <h3 class="color-group-title">Cyan — Technologie</h3>
+                    <p class="color-group-desc">Doplňková barva, info stavy</p>
+                    <div class="color-swatches">
+                        <div class="color-swatch" style="background: var(--cyan-50);"><div class="info"><span class="shade">50</span><span class="hex">#ecfeff</span></div></div>
+                        <div class="color-swatch" style="background: var(--cyan-100);"><div class="info"><span class="shade">100</span><span class="hex">#cffafe</span></div></div>
+                        <div class="color-swatch" style="background: var(--cyan-200);"><div class="info"><span class="shade">200</span><span class="hex">#a5f3fc</span></div></div>
+                        <div class="color-swatch" style="background: var(--cyan-300);"><div class="info"><span class="shade">300</span><span class="hex">#67e8f9</span></div></div>
+                        <div class="color-swatch" style="background: var(--cyan-400);"><div class="info"><span class="shade">400</span><span class="hex">#22d3ee</span></div></div>
+                        <div class="color-swatch" style="background: var(--cyan-500);"><div class="info"><span class="shade">500</span><span class="hex">#06b6d4</span></div></div>
+                        <div class="color-swatch" style="background: var(--cyan-600);"><div class="info"><span class="shade">600</span><span class="hex">#0891b2</span></div></div>
+                        <div class="color-swatch" style="background: var(--cyan-700);"><div class="info"><span class="shade">700</span><span class="hex">#0e7490</span></div></div>
+                        <div class="color-swatch" style="background: var(--cyan-800);"><div class="info"><span class="shade">800</span><span class="hex">#155e75</span></div></div>
+                        <div class="color-swatch" style="background: var(--cyan-900);"><div class="info"><span class="shade">900</span><span class="hex">#164e63</span></div></div>
+                    </div>
+                </div>
+
+                <!-- Green -->
+                <div class="color-group">
+                    <h3 class="color-group-title">Green — Růst & Úspěch</h3>
+                    <p class="color-group-desc">Gradient end, success stavy</p>
+                    <div class="color-swatches">
+                        <div class="color-swatch" style="background: var(--green-50);"><div class="info"><span class="shade">50</span><span class="hex">#ecfdf5</span></div></div>
+                        <div class="color-swatch" style="background: var(--green-100);"><div class="info"><span class="shade">100</span><span class="hex">#d1fae5</span></div></div>
+                        <div class="color-swatch" style="background: var(--green-200);"><div class="info"><span class="shade">200</span><span class="hex">#a7f3d0</span></div></div>
+                        <div class="color-swatch" style="background: var(--green-300);"><div class="info"><span class="shade">300</span><span class="hex">#6ee7b7</span></div></div>
+                        <div class="color-swatch" style="background: var(--green-400);"><div class="info"><span class="shade">400</span><span class="hex">#34d399</span></div></div>
+                        <div class="color-swatch" style="background: var(--green-500);"><div class="info"><span class="shade">500</span><span class="hex">#10b981</span></div></div>
+                        <div class="color-swatch" style="background: var(--green-600);"><div class="info"><span class="shade">600</span><span class="hex">#059669</span></div></div>
+                        <div class="color-swatch" style="background: var(--green-700);"><div class="info"><span class="shade">700</span><span class="hex">#047857</span></div></div>
+                        <div class="color-swatch" style="background: var(--green-800);"><div class="info"><span class="shade">800</span><span class="hex">#065f46</span></div></div>
+                        <div class="color-swatch" style="background: var(--green-900);"><div class="info"><span class="shade">900</span><span class="hex">#064e3b</span></div></div>
+                    </div>
+                </div>
+
+                <!-- Slate -->
+                <div class="color-group">
+                    <h3 class="color-group-title">Slate — Neutrální základ</h3>
+                    <p class="color-group-desc">Pozadí, texty, strukturální prvky</p>
+                    <div class="color-swatches">
+                        <div class="color-swatch" style="background: var(--slate-50);"><div class="info"><span class="shade">50</span><span class="hex">#f8fafc</span></div></div>
+                        <div class="color-swatch" style="background: var(--slate-100);"><div class="info"><span class="shade">100</span><span class="hex">#f1f5f9</span></div></div>
+                        <div class="color-swatch" style="background: var(--slate-200);"><div class="info"><span class="shade">200</span><span class="hex">#e2e8f0</span></div></div>
+                        <div class="color-swatch" style="background: var(--slate-300);"><div class="info"><span class="shade">300</span><span class="hex">#cbd5e1</span></div></div>
+                        <div class="color-swatch" style="background: var(--slate-400);"><div class="info"><span class="shade">400</span><span class="hex">#94a3b8</span></div></div>
+                        <div class="color-swatch" style="background: var(--slate-500);"><div class="info"><span class="shade">500</span><span class="hex">#64748b</span></div></div>
+                        <div class="color-swatch" style="background: var(--slate-600);"><div class="info"><span class="shade">600</span><span class="hex">#475569</span></div></div>
+                        <div class="color-swatch" style="background: var(--slate-700);"><div class="info"><span class="shade">700</span><span class="hex">#334155</span></div></div>
+                        <div class="color-swatch" style="background: var(--slate-800);"><div class="info"><span class="shade">800</span><span class="hex">#1e293b</span></div></div>
+                        <div class="color-swatch" style="background: var(--slate-900);"><div class="info"><span class="shade">900</span><span class="hex">#0f172a</span></div></div>
+                    </div>
+                </div>
+
+                <!-- Semantic -->
+                <div class="color-group">
+                    <h3 class="color-group-title">Sémantické barvy</h3>
+                    <div class="color-swatches" style="grid-template-columns: repeat(4, 1fr);">
+                        <div class="color-swatch" style="background: var(--success);"><div class="info"><span class="shade">Success</span><span class="hex">#10b981</span></div></div>
+                        <div class="color-swatch" style="background: var(--warning);"><div class="info"><span class="shade">Warning</span><span class="hex">#f59e0b</span></div></div>
+                        <div class="color-swatch" style="background: var(--error);"><div class="info"><span class="shade">Error</span><span class="hex">#ef4444</span></div></div>
+                        <div class="color-swatch" style="background: var(--info);"><div class="info"><span class="shade">Info</span><span class="hex">#3b82f6</span></div></div>
+                    </div>
+                </div>
+
+                <!-- Additional Gradients -->
+                <div class="color-group">
+                    <h3 class="color-group-title">Doplňkové gradienty</h3>
+                    <div class="gradient-swatches">
+                        <div class="gradient-swatch" style="background: var(--gradient-hub);">
+                            <span class="name">Hub Gradient</span>
+                            <span class="value">Pro element Hub v logu</span>
+                        </div>
+                        <div class="gradient-swatch" style="background: var(--gradient-violet-blue);">
+                            <span class="name">Violet → Blue</span>
+                            <span class="value">Kreativita + spolehlivost</span>
+                        </div>
+                        <div class="gradient-swatch" style="background: var(--gradient-cyan-green);">
+                            <span class="name">Cyan → Green</span>
+                            <span class="value">Technologie + růst</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Typography Section -->
+    <section id="typography">
+        <div class="container">
+            <span class="section-label">03 — Typografie</span>
+            <h2 class="section-title">Písma a texty</h2>
+            <p class="section-desc">Manrope přináší eleganci a sofistikovanost. IBM Plex Mono pro technické prvky doplňuje profesionální dojem.</p>
+
+            <div class="type-specimen">
+                <!-- Manrope -->
+                <div class="type-family">
+                    <div class="type-family-header">
+                        <span class="type-family-name">Manrope</span>
+                        <span class="type-family-meta">Primary Font • Google Fonts</span>
+                    </div>
+                    <div class="type-sample">Vytvářejte obsah, který zaujme.</div>
+                    <div class="type-alphabet">ABCDEFGHIJKLMNOPQRSTUVWXYZ</div>
+                    <div class="type-alphabet">abcdefghijklmnopqrstuvwxyz</div>
+                    <div class="type-alphabet">0123456789 !@#$%^&*()</div>
+                    <div class="type-weights">
+                        <span class="type-weight" style="font-weight: 300;">Light 300</span>
+                        <span class="type-weight" style="font-weight: 400;">Regular 400</span>
+                        <span class="type-weight" style="font-weight: 500;">Medium 500</span>
+                        <span class="type-weight" style="font-weight: 600;">SemiBold 600</span>
+                        <span class="type-weight" style="font-weight: 700;">Bold 700</span>
+                        <span class="type-weight" style="font-weight: 800;">ExtraBold 800</span>
+                    </div>
+                </div>
+
+                <!-- IBM Plex Mono -->
+                <div class="type-family">
+                    <div class="type-family-header">
+                        <span class="type-family-name" style="font-family: var(--font-mono);">IBM Plex Mono</span>
+                        <span class="type-family-meta">Monospace • Labels & Code</span>
+                    </div>
+                    <div class="type-sample" style="font-family: var(--font-mono); font-size: 2rem;">AI-powered content</div>
+                    <div class="type-alphabet" style="font-family: var(--font-mono);">ABCDEFGHIJKLMNOPQRSTUVWXYZ</div>
+                    <div class="type-alphabet" style="font-family: var(--font-mono);">abcdefghijklmnopqrstuvwxyz</div>
+                    <div class="type-alphabet" style="font-family: var(--font-mono);">0123456789 !@#$%^&*()</div>
+                    <div class="type-weights">
+                        <span class="type-weight" style="font-family: var(--font-mono); font-weight: 400;">Regular 400</span>
+                        <span class="type-weight" style="font-family: var(--font-mono); font-weight: 500;">Medium 500</span>
+                        <span class="type-weight" style="font-family: var(--font-mono); font-weight: 600;">SemiBold 600</span>
+                        <span class="type-weight" style="font-family: var(--font-mono); font-weight: 700;">Bold 700</span>
+                    </div>
+                </div>
+
+                <!-- Type Scale -->
+                <h3 class="mt-12" style="color: white; margin-bottom: var(--space-4);">Typografická škála</h3>
+                <div class="type-scale">
+                    <div class="type-scale-item">
+                        <span class="type-scale-label">Display / 48px</span>
+                        <span class="type-scale-sample" style="font-size: 3rem; font-weight: 800;">Post Hub</span>
+                    </div>
+                    <div class="type-scale-item">
+                        <span class="type-scale-label">H1 / 36px</span>
+                        <span class="type-scale-sample" style="font-size: 2.25rem; font-weight: 700;">Hlavní nadpis</span>
+                    </div>
+                    <div class="type-scale-item">
+                        <span class="type-scale-label">H2 / 28px</span>
+                        <span class="type-scale-sample" style="font-size: 1.75rem; font-weight: 700;">Sekce nadpis</span>
+                    </div>
+                    <div class="type-scale-item">
+                        <span class="type-scale-label">H3 / 22px</span>
+                        <span class="type-scale-sample" style="font-size: 1.375rem; font-weight: 600;">Podsekce</span>
+                    </div>
+                    <div class="type-scale-item">
+                        <span class="type-scale-label">Body / 16px</span>
+                        <span class="type-scale-sample" style="font-size: 1rem;">Základní text pro delší odstavce a popisky.</span>
+                    </div>
+                    <div class="type-scale-item">
+                        <span class="type-scale-label">Small / 14px</span>
+                        <span class="type-scale-sample" style="font-size: 0.875rem; color: var(--slate-300);">Pomocný text, popisky, metadata</span>
+                    </div>
+                    <div class="type-scale-item">
+                        <span class="type-scale-label">Caption / 12px</span>
+                        <span class="type-scale-sample" style="font-size: 0.75rem; color: var(--slate-400); font-family: var(--font-mono); text-transform: uppercase; letter-spacing: 0.1em;">LABEL • BADGE • TAG</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Components Section -->
+    <section id="components">
+        <div class="container">
+            <span class="section-label">04 — Komponenty</span>
+            <h2 class="section-title">UI prvky</h2>
+            <p class="section-desc">Konzistentní sada komponent s podporou brand gradientu.</p>
+
+            <div class="components-grid">
+                <!-- Buttons -->
+                <div class="component-card">
+                    <h4 class="component-title">Tlačítka</h4>
+                    <div class="component-demo" style="flex-direction: column; align-items: flex-start;">
+                        <div class="flex gap-4">
+                            <button class="btn btn-primary">Primary</button>
+                            <button class="btn btn-gradient">Gradient</button>
+                        </div>
+                        <div class="flex gap-4 mt-4">
+                            <button class="btn btn-secondary">Secondary</button>
+                            <button class="btn btn-outline">Outline</button>
+                        </div>
+                        <div class="flex gap-4 mt-4">
+                            <button class="btn btn-ghost">Ghost</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Inputs -->
+                <div class="component-card">
+                    <h4 class="component-title">Vstupní pole</h4>
+                    <div class="component-demo" style="flex-direction: column; gap: var(--space-3);">
+                        <input type="text" class="input" placeholder="Zadejte text...">
+                        <input type="text" class="input" value="Vyplněné pole">
+                    </div>
+                </div>
+
+                <!-- Badges -->
+                <div class="component-card">
+                    <h4 class="component-title">Odznaky — Brand barvy</h4>
+                    <div class="component-demo">
+                        <span class="badge badge-violet">Violet</span>
+                        <span class="badge badge-blue">Blue</span>
+                        <span class="badge badge-cyan">Cyan</span>
+                        <span class="badge badge-green">Green</span>
+                    </div>
+                </div>
+
+                <!-- Semantic Badges -->
+                <div class="component-card">
+                    <h4 class="component-title">Odznaky — Sémantické</h4>
+                    <div class="component-demo">
+                        <span class="badge badge-success">Aktivní</span>
+                        <span class="badge badge-warning">Čeká</span>
+                        <span class="badge badge-error">Chyba</span>
+                    </div>
+                </div>
+
+                <!-- Toggle -->
+                <div class="component-card">
+                    <h4 class="component-title">Přepínač</h4>
+                    <div class="component-demo">
+                        <div class="toggle"></div>
+                        <div class="toggle active"></div>
+                    </div>
+                </div>
+
+                <!-- Card Example -->
+                <div class="component-card">
+                    <h4 class="component-title">Karta</h4>
+                    <div class="card" style="max-width: 100%;">
+                        <h3 style="color: white; font-size: 1.125rem; margin-bottom: var(--space-2);">Název tématu</h3>
+                        <p style="color: var(--slate-400); font-size: 0.875rem; margin-bottom: var(--space-4);">Popis generovaného obsahu pro sociální sítě.</p>
+                        <div class="flex gap-4">
+                            <span class="badge badge-blue">Instagram</span>
+                            <span class="badge badge-success">Připraveno</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Spacing Section -->
+    <section id="spacing">
+        <div class="container">
+            <span class="section-label">05 — Rozestupy</span>
+            <h2 class="section-title">Spacing systém</h2>
+            <p class="section-desc">Konzistentní rozestupy založené na 4px jednotce.</p>
+
+            <div class="spacing-demo">
+                <div class="spacing-item">
+                    <div class="spacing-box" style="width: 4px; height: 24px;"></div>
+                    <div><span class="spacing-label">space-1</span> <span class="spacing-value">4px</span></div>
+                </div>
+                <div class="spacing-item">
+                    <div class="spacing-box" style="width: 8px; height: 24px;"></div>
+                    <div><span class="spacing-label">space-2</span> <span class="spacing-value">8px</span></div>
+                </div>
+                <div class="spacing-item">
+                    <div class="spacing-box" style="width: 12px; height: 24px;"></div>
+                    <div><span class="spacing-label">space-3</span> <span class="spacing-value">12px</span></div>
+                </div>
+                <div class="spacing-item">
+                    <div class="spacing-box" style="width: 16px; height: 24px;"></div>
+                    <div><span class="spacing-label">space-4</span> <span class="spacing-value">16px</span></div>
+                </div>
+                <div class="spacing-item">
+                    <div class="spacing-box" style="width: 24px; height: 24px;"></div>
+                    <div><span class="spacing-label">space-6</span> <span class="spacing-value">24px</span></div>
+                </div>
+                <div class="spacing-item">
+                    <div class="spacing-box" style="width: 32px; height: 24px;"></div>
+                    <div><span class="spacing-label">space-8</span> <span class="spacing-value">32px</span></div>
+                </div>
+                <div class="spacing-item">
+                    <div class="spacing-box" style="width: 48px; height: 24px;"></div>
+                    <div><span class="spacing-label">space-12</span> <span class="spacing-value">48px</span></div>
+                </div>
+            </div>
+
+            <h3 class="mt-12" style="color: white; margin-bottom: var(--space-4);">Border Radius</h3>
+            <div class="spacing-demo">
+                <div class="spacing-item">
+                    <div style="width: 48px; height: 48px; background: var(--gradient-brand); border-radius: var(--radius-sm);"></div>
+                    <div><span class="spacing-label">sm</span> <span class="spacing-value">4px</span></div>
+                </div>
+                <div class="spacing-item">
+                    <div style="width: 48px; height: 48px; background: var(--gradient-brand); border-radius: var(--radius-md);"></div>
+                    <div><span class="spacing-label">md</span> <span class="spacing-value">8px</span></div>
+                </div>
+                <div class="spacing-item">
+                    <div style="width: 48px; height: 48px; background: var(--gradient-brand); border-radius: var(--radius-lg);"></div>
+                    <div><span class="spacing-label">lg</span> <span class="spacing-value">12px</span></div>
+                </div>
+                <div class="spacing-item">
+                    <div style="width: 48px; height: 48px; background: var(--gradient-brand); border-radius: var(--radius-xl);"></div>
+                    <div><span class="spacing-label">xl</span> <span class="spacing-value">16px</span></div>
+                </div>
+                <div class="spacing-item">
+                    <div style="width: 48px; height: 48px; background: var(--gradient-brand); border-radius: var(--radius-2xl);"></div>
+                    <div><span class="spacing-label">2xl</span> <span class="spacing-value">24px</span></div>
+                </div>
+                <div class="spacing-item">
+                    <div style="width: 48px; height: 48px; background: var(--gradient-brand); border-radius: var(--radius-full);"></div>
+                    <div><span class="spacing-label">full</span> <span class="spacing-value">9999px</span></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Guidelines Section -->
+    <section id="guidelines">
+        <div class="container">
+            <span class="section-label">06 — Pravidla</span>
+            <h2 class="section-title">Použití značky</h2>
+            <p class="section-desc">Dodržujte tato pravidla pro konzistentní prezentaci značky Post Hub.</p>
+
+            <div class="dos-donts">
+                <div class="do-item">
+                    <span class="label">✓ Správně</span>
+                    <p>Používejte logo s kompletním gradient ringem</p>
+                </div>
+                <div class="dont-item">
+                    <span class="label">✗ Špatně</span>
+                    <p>Neměňte barvy ani pořadí gradientu</p>
+                </div>
+                <div class="do-item">
+                    <span class="label">✓ Správně</span>
+                    <p>Zachovávejte ochrannou zónu kolem loga</p>
+                </div>
+                <div class="dont-item">
+                    <span class="label">✗ Špatně</span>
+                    <p>Netlačte logo k okrajům nebo jiným prvkům</p>
+                </div>
+                <div class="do-item">
+                    <span class="label">✓ Správně</span>
+                    <p>Modrá jako hlavní akční barva, gradient pro speciální prvky</p>
+                </div>
+                <div class="dont-item">
+                    <span class="label">✗ Špatně</span>
+                    <p>Nepoužívejte gradient na běžné UI prvky</p>
+                </div>
+                <div class="do-item">
+                    <span class="label">✓ Správně</span>
+                    <p>Kombinujte Manrope + IBM Plex Mono dle guidelines</p>
+                </div>
+                <div class="dont-item">
+                    <span class="label">✗ Špatně</span>
+                    <p>Nepoužívejte jiná písma než definovaná</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="flex justify-center mb-4">
+                <div class="logo-ring md">
+                    <div class="logo-text">
+                        <span class="post">Post</span>
+                        <span class="hub">Hub</span>
+                    </div>
+                </div>
+            </div>
+            <p>Visual Book v3.0 — Prosinec 2024</p>
+            <p style="margin-top: var(--space-2);">Pro interní použití</p>
+        </div>
+    </footer>
+
+    <script>
+        // Interactive toggles
+        document.querySelectorAll('.toggle').forEach(toggle => {
+            toggle.addEventListener('click', () => toggle.classList.toggle('active'));
+        });
+
+        // Navigation highlight
+        const sections = document.querySelectorAll('section[id]');
+        const navLinks = document.querySelectorAll('.toc a');
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                if (scrollY >= section.offsetTop - 300) current = section.getAttribute('id');
+            });
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === '#' + current) link.classList.add('active');
+            });
+        });
+    </script>
+</body>
+</html>
